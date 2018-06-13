@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.priyanka2005.railwayapp.R;
 import com.example.priyanka2005.railwayapp.activities.LoginActivity;
@@ -46,5 +47,10 @@ public class SplashActivity extends AppCompatActivity {
         timer.start();
 
 
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
     }
 }

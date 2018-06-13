@@ -34,6 +34,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         if(currUser!=null){
             startActivity( new Intent( getApplicationContext(),HomeActivity.class ) );
+            finish();
         }
     }
 
