@@ -11,6 +11,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -23,6 +25,7 @@ import com.example.priyanka2005.railwayapp.fragments_nav.DivisionFragment;
 import com.example.priyanka2005.railwayapp.fragments_nav.HeadquartersFragment;
 import com.example.priyanka2005.railwayapp.fragments_nav.HomeFragment;
 import com.example.priyanka2005.railwayapp.fragments_nav.WatcFragment;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -114,5 +117,29 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.closeDrawer(GravityCompat.START);
 
         return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater menuInflater= getMenuInflater();
+        menuInflater.inflate( R.menu.menu,menu );
+        return true;
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId())
+        {
+            case R.id.logout:
+                FirebaseAuth.getInstance().signOut();
+                finish();
+                startActivity( new Intent( getApplicationContext(),LoginActivity.class ));
+                break;
+        }
+        return true;
+
     }
 }
